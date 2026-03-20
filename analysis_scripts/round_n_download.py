@@ -3,14 +3,25 @@ import json
 import time
 import csv
 from tqdm import tqdm
+import sys
+from pathlib import Path
+
+# Adding the parent directory to path for environment variables
+path_root = Path(__file__).parents[1]
+sys.path.append(str(path_root))
+from config import NEXT_ACTION_ID, COOKIE, DATA_FILE_PATH
+
+## Begin main code
 
 def get_complete_herd_history(start_id, end_id):
     url = "https://fantasyherd.co.nz/results"
     
-    # 1. UPDATE THESE TWO FROM YOUR BROWSER
-    next_action_id = "7f25cd7f274b40f654d530bda994dbbabc4b2c6c8d" 
-    cookie = "_ga=GA1.1.1506113303.1770801640; accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI0MzU1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiMGZmZDc2YzUtYmNkMy00MjI3LThkYjEtN2U4NjA4NzRkNTg5IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiTmFyYXlhbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3N1cm5hbWUiOiJTaGFzdHJpIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiZnBvZHVuZWRpbjgzQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2NvdW50cnkiOiIxNTgiLCJpcGFkZHIiOiIxMzkuODAuMjM5LjY1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTc3MzAwNzMxNywiaXNzIjoiZmFudGFzeS1oZXJkIiwiYXVkIjoiZmFudGFzeS1oZXJkLXVzZXJzIn0.M10QEWh10RAH-q_-cKVenfW43uTNaHCemeu3eUkKdA4; accessTokenExpiresAt=2026-03-08T22%3A01%3A57.368Z; refreshToken=xyZnm6bmLuMqis760xjJVOAbUH9Ct30CoibW2PeR%2Fs%2BNKsVJnPMecvqw%2BxIuqqmY%2FpUqsfXS%2Fct1iL3xj4qM2g%3D%3D; refreshTokenExpiresAt=2026-03-15T21%3A01%3A57.368Z; _ga_4VSVNMX6C1=GS2.1.s1773003707$o16$g1$t1773004455$j56$l0$h0; lastActivity=2026-03-08T21%3A17%3A08.569Z"
-
+    # Update these directly from browser or through .env and config pipeline
+    next_action_id = NEXT_ACTION_ID 
+    cookie = COOKIE
+    data_path = DATA_FILE_PATH
+    
+    # Define headers for web-scrape
     headers = {
         "Next-Action": next_action_id,
         "Content-Type": "text/plain;charset=UTF-8",
@@ -58,15 +69,15 @@ def get_complete_herd_history(start_id, end_id):
 
     # 3. SAVE TO CSV
     if master_stats:
-        with open(r'C:\Users\nansh\Documents\Python\fantasy_herd\herd_stats_all.csv', 'w', newline='', encoding='utf-8') as f:
+        with open(data_path, 'w', newline='', encoding='utf-8') as f:
             # Dynamically get headers from the first entry
             fieldnames = master_stats[0].keys()
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(master_stats)
-        print(f"Saved {len(master_stats)} rows to 'complete_herd_history.csv'")
+        print(f"Saved {len(master_stats)} rows to f'{data_path}.csv")
     else:
         print("\nNo data collected. Check your Next-Action ID and Cookie.")
 
 # Run for your full range
-get_complete_herd_history(231, 731)
+get_complete_herd_history(231, 232)
