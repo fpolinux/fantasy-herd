@@ -4,7 +4,7 @@ A collection of all the code used to run my drafting on Meadow Fresh's fantasy h
 ## The updated weekly database is provided 
 Current week's data is conveniently placed in data/herd_stats_all.csv. If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as below.
 
-## Run locally
+# To Run Locally
 
 ## Setup
 1. Create and activate a virtual environment
