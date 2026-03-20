@@ -7,7 +7,7 @@ A collection of all the code used to run my drafting on Meadow Fresh's fantasy h
    pip install -r requirements.txt
 
 ## Run locally
-python *
+python *\
 Where * is the name of the analysis script you would like to run. 
 
 ## Notes
