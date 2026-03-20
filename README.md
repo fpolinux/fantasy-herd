@@ -31,12 +31,12 @@ python analysis_scripts/round_n_download.py
 ## Other Code Snippets and Applications
 The code in gemini_ml.py is a vibe-coded optimiser to pick the best herd based on the fantasy cow universe. This model selects based on the following features:
 1. Total Pts
-2. FCE
-3. KGMS
-4. Move Points
+2. Food Conversion Efficiency ("FCE")
+3. KG Milk Solids ("KGMS")
+4. Movement Points
 5. Resting (Binary yes/no)
 
-For continuous data, the mean is used wherever possible and for total pts, the model also accounts for the volatility (std deviation) of a cow's ability to earn points. 
+For continuous data, the mean is used wherever possible. For total pts, the model also accounts for the volatility (std deviation) of a cow's ability to earn points. 
 
 ## Notes
 In the Data/ folder you will find individual cow cards, my csv extracts from web-scrapes, and some basic EDA done in excel.
