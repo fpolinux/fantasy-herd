@@ -1,34 +1,40 @@
 # Fantasy Herd Analysis
 A collection of all the code used to run my drafting on Meadow Fresh's fantasy herd. 
 
+## The updated weekly database is provided 
+Current week's data is conveniently placed in data/herd_stats_all.csv. If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as below.
+
+## Run locally
+
 ## Setup
 1. Create and activate a virtual environment
 2. Install dependencies:
-   pip install -r requirements.txt
-
-## Run locally
-To download the most up to date data for yourself. Open up fantasyherd.co.nz and find your session's respective Next-Action-ID and Cookie and add these into config.py. These both can be found through: inspect element -> network -> requests -> headers. The below code showcases storing these variables in a .env file but you can also just replace the RHS with your respective codes if running them for yourself.
-
 ```bash
-NEXT_ACTION_ID = os.getenv("YOUR_NEXT_ACTION_ID") 
-COOKIE = os.getenv("YOUR_COOKIE")
-DATA_FILE_PATH = Path(os.getenv("LOCATION_FOR_DATA_FILE"))
+pip install -r requirements.txt
 ```
 
-Then once that is done, you can run to download the entire cow database so far. 
+To download the most up to date data for yourself, open up [fantasyherd](https://fantasyherd.co.nz) and find your session's respective Next-Action-ID and Cookie and add these into config.py. **NEXT_ACTION_ID** and **COOKIE** can both can be found through: **inspect element -> network -> requests -> headers**. Choose **DATA_FILE_PATH** as an appropriate location to store your csv of cow data. 
+
+I encourages the usage of .env wherever possible but for personal usage you can also just **replace the environment variable code in round_n_download.py** to your own variables. 
+
 ```bash
-python data/run_n_download.py
+NEXT_ACTION_ID = "YOUR_NEXT_ACTION_ID"
+COOKIE = "YOUR_COOKIE"
+DATA_FILE_PATH = "LOCATION_FOR_DATA_FILE"
 ```
 
-## Features and Functions
-Current week's data is conveniently placed in data/herd_stats_all.csv. If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as above. 
-
+Then **once that is done**, you can run to download round-by-round the entire cow database so far. 
+```bash
+python analysis_scripts/round_n_download.py
+```
+ 
+## Other Code Snippets and Applications
 The code in gemini_ml.py is a vibe-coded optimiser to pick the best herd based on the fantasy cow universse. This model selects based on the following features:
 1. Total Pts
 2. FCE
 3. KGMS
 4. Move Points
-5. Resting
+5. Resting (Binary yes/no)
 
 For continuous data, the mean is used wherever possible and for total pts, the model also accounts for the volatility (std deviation) of a cow's ability to earn points. 
 
