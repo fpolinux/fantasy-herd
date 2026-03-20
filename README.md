@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 To download the most up to date data for yourself, open up [fantasyherd](https://fantasyherd.co.nz) and find your session's respective Next-Action-ID and Cookie and add these into config.py. **NEXT_ACTION_ID** and **COOKIE** can both can be found through: **inspect element -> network -> requests -> headers**. Choose **DATA_FILE_PATH** as an appropriate location to store your csv of cow data. 
 
-I encourages the usage of .env wherever possible but for personal usage you can also just **replace the environment variable code in round_n_download.py** to your own variables. 
+I encourage the usage of .env wherever possible but for personal usage you can also just **replace the environment variable code in round_n_download.py** to your own variables. 
 
 ```bash
 NEXT_ACTION_ID = "YOUR_NEXT_ACTION_ID"
