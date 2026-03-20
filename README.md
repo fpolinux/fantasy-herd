@@ -7,11 +7,21 @@ A collection of all the code used to run my drafting on Meadow Fresh's fantasy h
    pip install -r requirements.txt
 
 ## Run locally
-python *\
-Where * is the name of the analysis script you would like to run. 
+To download the most up to date data for yourself. Open up fantasyherd.co.nz and find your session's respective Next-Action-ID and Cookie and add these into config.py. These both can be found through: inspect element -> network -> requests -> headers
+
+```bash
+NEXT_ACTION_ID = os.getenv("YOUR_NEXT_ACTION_ID") 
+COOKIE = os.getenv("YOUR_COOKIE")
+DATA_FILE_PATH = Path(os.getenv("LOCATION_FOR_DATA_FILE"))
+```
+
+Then once that is done, you can run to download the entire cow database so far. 
+```bash
+python data/run_n_download.py
+```
 
 ## Features and Functions
-Current week's data is conveniently placed in data/herd_stats_all.csv. If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py. 
+Current week's data is conveniently placed in data/herd_stats_all.csv. If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as above. 
 
 The code in gemini_ml.py is a vibe-coded optimiser to pick the best herd based on the fantasy cow universse. This model selects based on the following features:
 1. Total Pts
