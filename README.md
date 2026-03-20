@@ -23,7 +23,7 @@ COOKIE = "YOUR_COOKIE"
 DATA_FILE_PATH = "LOCATION_FOR_DATA_FILE"
 ```
 
-Then **once that is done**, you can run to download round-by-round the entire cow database so far. 
+Then **once that is done**, you can download round-by-round the entire cow database so far. 
 ```bash
 python analysis_scripts/round_n_download.py
 ```
