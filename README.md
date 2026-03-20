@@ -7,7 +7,7 @@ A collection of all the code used to run my drafting on Meadow Fresh's fantasy h
    pip install -r requirements.txt
 
 ## Run locally
-To download the most up to date data for yourself. Open up fantasyherd.co.nz and find your session's respective Next-Action-ID and Cookie and add these into config.py. These both can be found through: inspect element -> network -> requests -> headers
+To download the most up to date data for yourself. Open up fantasyherd.co.nz and find your session's respective Next-Action-ID and Cookie and add these into config.py. These both can be found through: inspect element -> network -> requests -> headers. The below code showcases storing these variables in a .env file but you can also just replace the RHS with your respective codes if running them for yourself.
 
 ```bash
 NEXT_ACTION_ID = os.getenv("YOUR_NEXT_ACTION_ID") 
