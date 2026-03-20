@@ -3,10 +3,18 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
+import sys
+from pathlib import Path
 
+# Adding the parent directory to path for environment variables
+path_root = Path(__file__).parents[1]
+sys.path.append(str(path_root))
+from config import NEXT_ACTION_ID, COOKIE, DATA_FILE_PATH
+data_path = DATA_FILE_PATH
+    
 # 1. LOAD THE SCRAPED HISTORY
 # This is the long-format data with multiple weeks per cow
-df_history = pd.read_csv(r"C:\Users\nansh\Documents\Python\fantasy_herd\herd_stats_all.csv")
+df_history = pd.read_csv(data_path)
 
 # 2. FEATURE ENGINEERING (The "Multi-Week" Logic)
 # Compress the history into a single row per cow, but keep the statistical 'flavor'
