@@ -1,5 +1,6 @@
 # Fantasy Herd Analysis
 A collection of all the code used to run my drafting on Meadow Fresh's fantasy herd. 
+!(assets/generic_cows.jpg)
 
 ## The updated weekly database is provided 
 Current week's data is conveniently placed in data/herd_stats_all.csv. If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as below.
@@ -37,6 +38,9 @@ The code in gemini_ml.py is a vibe-coded optimiser to pick the best herd based o
 5. Resting (Binary yes/no)
 
 For continuous data, the mean is used wherever possible. For total pts, the model also accounts for the volatility (std deviation) of a cow's ability to earn points. 
+
+Example output for running the machine learning code: 
+!(assets/fantasy_herd_sample.png)
 
 ## Notes
 In the Data/ folder you will find individual cow cards, my csv extracts from web-scrapes, and some basic EDA done in excel.
