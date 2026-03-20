@@ -20,7 +20,7 @@ def get_complete_herd_history(start_id, end_id):
 
     master_stats = []
 
-    print(f"🚀 Scanning history for IDs {start_id} to {end_id}...")
+    print(f"Scanning history for IDs {start_id} to {end_id}...")
 
     for cow_id in tqdm(range(start_id, end_id + 1), desc="Fetching Cow History", unit="cow", dynamic_ncols=True):
         try:
@@ -54,7 +54,7 @@ def get_complete_herd_history(start_id, end_id):
             time.sleep(0.1) # Respect the server
 
         except Exception as e:
-            tqdm.write(f"❌ Error on ID {cow_id}: {e}")
+            tqdm.write(f"Error on ID {cow_id}: {e}")
 
     # 3. SAVE TO CSV
     if master_stats:
@@ -64,9 +64,9 @@ def get_complete_herd_history(start_id, end_id):
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(master_stats)
-        print(f"\n✅ Success! Saved {len(master_stats)} rows to 'complete_herd_history.csv'")
+        print(f"Saved {len(master_stats)} rows to 'complete_herd_history.csv'")
     else:
-        print("\n⚠️ No data collected. Check your Next-Action ID and Cookie.")
+        print("\nNo data collected. Check your Next-Action ID and Cookie.")
 
 # Run for your full range
 get_complete_herd_history(231, 731)

@@ -58,7 +58,7 @@ def get_herd_stats(start_id, end_id):
             time.sleep(0.1)
 
         except Exception as e:
-            print(f"\n❌ Error on ID {cow_id}: {e}")
+            print(f"\nError on ID {cow_id}: {e}")
 
     # Save to CSV
     with open(r'C:\Users\nansh\Documents\Python\fantasy_herd\herd_stats.csv', 'w', newline='', encoding='utf-8') as f:

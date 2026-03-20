@@ -5,7 +5,7 @@ import os
 from tqdm import tqdm
 import re
 
-# 1. Exact Coordinates from your spreadsheet (Left, Top, Right, Bottom)
+# 1. Exact Coordinates from image (Left, Top, Right, Bottom)
 zones = {        
     "Milk_Volume_KL": (91, 732, 230, 788),  # Your MV coordinates
     "Protein_KG": (86, 821, 251, 877),     # Your Protein coordinates
@@ -40,9 +40,6 @@ for filename in tqdm(files[:4], desc="Processing", unit="card"):
         
         for field, coords in zones.items():
             cropped = img.crop(coords)
-            
-            # Use PSM 6 (single block) or PSM 7 (single line)
-            # PSM 7 is often better for short numeric strings like your data
             config = '--psm 7' if field != "Name" else '--psm 6'
             raw_text = pytesseract.image_to_string(cropped, config=config).strip()
             

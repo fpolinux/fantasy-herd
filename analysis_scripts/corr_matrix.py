@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
 
-df = pd.read_excel(r"C:\Users\nansh\Documents\Python\fantasy_herd\round_1_model_data.xlsx", sheet_name="Sheet1")
+df = pd.read_excel(r"C:\Users\nansh\Documents\Python\fantasy_herd\data\round_1_model_data.xlsx", sheet_name="Sheet1")
 df.columns = df.columns.str.strip()
 #print(df.columns)
 
