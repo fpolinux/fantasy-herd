@@ -80,4 +80,4 @@ def get_complete_herd_history(start_id, end_id):
         print("\nNo data collected. Check your Next-Action ID and Cookie.")
 
 # Run for your full range
-get_complete_herd_history(231, 232)
+get_complete_herd_history(231, 730)
