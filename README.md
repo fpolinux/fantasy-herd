@@ -3,7 +3,7 @@ A collection of all the code used to run my drafting on Meadow Fresh's fantasy h
 ![Fantasy Cow Image](./assets/generic_cows.jpg)
 
 ## The updated weekly database is provided 
-Current week's data is conveniently placed in (./data/herd_stats_all.csv). If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as below.
+Current week's data is conveniently placed in [/data/herd_stats_all.csv](./data/herd_stats_all.csv). If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as below.
 
 # To Run Locally
 
