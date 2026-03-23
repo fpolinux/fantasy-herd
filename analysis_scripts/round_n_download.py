@@ -17,7 +17,7 @@ def get_complete_herd_history(start_id, end_id):
     url = "https://fantasyherd.co.nz/results"
     
     # Update these directly from browser or through .env and config pipeline
-    next_action_id = NEXT_ACTION_ID 
+    next_action_id = NEXT_ACTION_ID
     cookie = COOKIE
     data_path = DATA_FILE_PATH
     
