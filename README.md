@@ -5,7 +5,7 @@ A collection of all the code used to run my drafting on Meadow Fresh's fantasy h
 ## The league is now complete!
 The league has now ended! Data for all cows including the final round is uploaded and will not be maintained any further. 
 
-As a point of interest, a herd based off the machine learning module in this repo and the data provided (updated weekly) placed 603/11619 globally and 552/10104 in New Zealand. The final points scored for that herd was 2381; with the global number and New Zealand pole position scoring 2567 points over the course of the six week long competition. 
+As a point of interest, a herd based off the machine learning module in this repo and the data provided (updated weekly) placed 603/11619 globally and 552/10104 in New Zealand. This placed the model in the top 5% of competitors globally. The final points scored for that herd was 2381; with the global pole position scoring 2567 points over the course of the six week long competition. 
 
 ## The updated weekly database is provided 
 Current week's data is conveniently placed in [/data/herd_stats_all.csv](./data/herd_stats_all.csv). If you would like to run the data extraction yourself, feel free to run analysis_scripts/round_n_download.py as below.
