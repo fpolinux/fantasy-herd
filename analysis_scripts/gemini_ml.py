@@ -20,6 +20,7 @@ df_history = pd.read_csv(data_path)
 # Compress the history into a single row per cow, but keep the statistical 'flavor'
 herd_features = df_history.groupby(['ID', 'Name', 'Tag']).agg({
     'Total Pts': ['mean', 'std', 'max', 'last'], # How they do on avg, volatility, peak, and most recent
+    'Milk Volume': ['mean', 'last'],
     'FCE': ['mean', 'last'],
     'KGMS': ['mean', 'last'],
     'Move Pts': 'mean',
@@ -28,15 +29,15 @@ herd_features = df_history.groupby(['ID', 'Name', 'Tag']).agg({
 
 # Flatten column names
 herd_features.columns = [
-    'Avg_Pts', 'Pts_Volatility', 'Peak_Pts', 'Recent_Pts', 
-    'Avg_FCE', 'Recent_FCE', 'Avg_KGMS', 'Recent_KGMS', 
+    'Avg_Pts', 'Pts_Volatility', 'Peak_Pts', 'Recent_Pts',
+    'Avg_Volume', 'Recent_Volume', 'Avg_FCE', 'Recent_FCE', 'Avg_KGMS', 'Recent_KGMS', 
     'Avg_Move_Pts', 'Rest_Count'
 ]
 herd_features = herd_features.reset_index()
 
 # 3. DEFINE THE MODEL INPUTS
 # Model to predict the 'Recent_Pts' based on their historical averages and volatility
-features = ['Avg_Pts', 'Pts_Volatility', 'Peak_Pts', 'Avg_FCE', 'Avg_KGMS', 'Avg_Move_Pts', 'Rest_Count']
+features = ['Avg_Pts', 'Pts_Volatility', 'Peak_Pts', 'Avg_Volume', 'Avg_FCE', 'Avg_KGMS', 'Avg_Move_Pts', 'Rest_Count']
 X = herd_features[features].fillna(0) # Fill volatility for cows with only 1 week of data
 y = herd_features['Recent_Pts']
 
